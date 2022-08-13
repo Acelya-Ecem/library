@@ -25,10 +25,10 @@
             $users = $query->fetchAll(PDO::FETCH_OBJ); //obje olarak parçalanıyor
             $passW = null; //şifreye gerek kalmdaı
 
-            if($query->rowCount() == 1){ //tam anlamadım ?? ama peki
+            if($query->rowCount() == 1){ // taap
                 //session_start(); gereksiz olduğu için koddan çıkarıldı
 
-                foreach($users as $u){ //tam anlamadım ?? ama peki (galiba veri tabnanından çekip classa aktarıyor)
+                foreach($users as $u){ // taap (galiba veri tabnanından çekip classa aktarıyor)
                     $this->userID = $u->userID; //this --> $u ??
                     $this->userName = $u->userName;
                     $this->name = $u->name;
@@ -40,16 +40,18 @@
                 $_SESSION['name'] = $this ->name;
                 $_SESSION['RGTime'] = $this ->RGTime;
 
-                header("Refresh:0 ; url=index.php");
+                //header("Refresh:0 ; url=index.php");
+                echo "1";
             }
 
             else{
-                $message = "User not found or wrong password!";
+                /*$message = "User not found or wrong password!";
                 echo  "
                     <script type = 'text/javascript'>
                         alert('$message');
                     </script>
-                ";
+                "; */
+                echo "0";
                 $this->logout();
             }
         }
